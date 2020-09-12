@@ -1,0 +1,79 @@
+div{
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    text-decoration-line: none;    
+    font-family: '宋体';
+    font-size: 20px;
+    color: aliceblue;
+}
+a:hover{
+    color: #dabe1f;
+}
+.layer1:hover,.layer2:hover,.layer3:hover,.layer4:hover,.layer5:hover{
+    background-color: bisque;
+}
+#box
+{
+    display: block;
+    width: 600px;
+    height: 600px;
+    border: 2px solid #cc3d8c;
+    margin: auto;
+    padding: 10px;
+}
+.layer1{
+    display: block;
+    border: 0 solid #1ab67a;
+    width: 200px;
+    height: 200px;
+    background: #50cf9e;
+    text-align: center;
+    line-height: 200px;
+}
+.layer2{
+    display: block;
+    border: 0 solid #2f94b3;
+    width: 200px;
+    height: 200px;
+    background: #805fce;
+    text-align: center;
+    line-height: 200px;
+    position: relative;
+    right: -400px;
+    top: -200px;
+}
+.layer3{
+    display: block;
+    border: 0 solid #f80693;
+    width: 200px;
+    height: 200px;
+    background: #b35f5f;
+    text-align: center;
+    line-height: 200px;
+}
+.layer4{
+    display: block;
+    border: 0 solid #dabe1f;
+    width: 200px;
+    height: 200px;
+    background: #b6744e;
+    text-align: center;
+    line-height: 200px;
+    position: relative;
+    right: -400px;
+    top: -200px;
+}
+.layer5{
+    display: block;
+    border: 0 solid #030303;
+    width: 200px;
+    height: 200px;
+    background: #5cc46a;
+    text-align: center;
+    line-height: 200px;
+    position: relative;
+    right: -200px;
+    top: -600px;
+}

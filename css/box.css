@@ -1,0 +1,36 @@
+div {
+    margin: 10px;
+    padding: 5px;
+}
+div[id="father"]>div{
+    vertical-align: bottom;
+    width: 200px;
+}
+#father {
+    border:1px #38af42 solid;
+}
+.layer1 {
+    border: 1px #228be0 dashed;
+    float: left;
+    overflow: scroll;
+}
+.layer2 {
+    border: 1px #228be0 dashed;
+    float: left;
+    overflow: scroll;
+}
+.layer3 {
+    border: 1px #228be0 dashed;
+    float: left;
+    overflow: scroll;
+}
+.layer4 {
+    border: 1px #228be0 dashed;
+    float: left;
+    overflow: scroll;
+}
+.layer5 {
+    border: 1px #cf4cbe dashed;
+    float: left;
+    overflow: scroll;
+}
