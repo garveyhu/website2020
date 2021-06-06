@@ -9,7 +9,6 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>servlet-1</module>
-    <module>servlettest</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -62,6 +61,12 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.21</version>
     </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20190722</version>
+    </dependency>
+
 
 
 

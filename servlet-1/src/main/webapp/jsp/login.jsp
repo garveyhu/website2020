@@ -7,7 +7,7 @@
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../bootstrap-3.4.1/js/bootstrap.min.js"></script>
     <style type="text/css">
-        body{background: url(../image/1.jpg) no-repeat;background-size:cover;font-size: 16px;}
+        body{background: url(../image/6.jpg) no-repeat;background-size:cover;font-size: 16px;}
         input[type="text"],input[type="password"]{padding-left:20px;}
         .login-form{background: rgba(255,255,255,0.3);width:400px;margin:100px auto;}
         .checkbox{padding-left:21px;}
@@ -34,7 +34,7 @@
                         <input type="checkbox" name="remember" value="1"/>Remember me
                     </label>
                     <hr />
-                    <a href="" id="register_btn" class="">Create an account</a>
+                    <a href="./jsp/usercrud/register.jsp" id="register_btn" class="">Create an account</a>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success pull-right" value="Login "/>
@@ -43,8 +43,5 @@
         </form>
     </div>
 </div>
-<script>
-    $("#register_btn").on("click",function (){location.href='jsp/usercrud/register.jsp';});
-</script>
 </body>
 </html>

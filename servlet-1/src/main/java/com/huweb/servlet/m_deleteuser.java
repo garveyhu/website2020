@@ -26,9 +26,14 @@ public class m_deleteuser extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (S)dis = request.getRequestDispatcher("/jsp/success/delsuccess.jsp");
-        else dis = request.getRequestDispatcher("/jsp/error.jsp");
-        dis.forward(request,response);
+        if (S) {
+            String info = "用户已被你删除！";
+            response.getWriter().print(info);
+        }
+        else {
+            String info = "没有该用户，删除失败！";
+            response.getWriter().print(info);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -29,9 +29,14 @@ public class registeruser extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (S)dis = request.getRequestDispatcher("/jsp/success/regsuccess.jsp");
-        else dis = request.getRequestDispatcher("/jsp/error.jsp");
-        dis.forward(request,response);
+        if (S){
+            String info = "点击返回登录哦！";
+            response.getWriter().print(info);
+        }
+        else {
+            String info = "error";
+            response.getWriter().print(info);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

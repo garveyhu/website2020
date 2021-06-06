@@ -110,12 +110,14 @@ public class BookDAO implements IBookDAO {
         prepStmt.setString(1,book.getBookname());
         rs = prepStmt.executeQuery();
         if (rs.next()){
+            book1 = new Book(0,null,null,0,null,0);
             book1.setId(rs.getInt(1));
             book1.setBookname(rs.getString(2));
             book1.setAuthor(rs.getString(3));
             book1.setPrice(rs.getFloat(4));
             book1.setRemarks(rs.getString(5));
             book1.setSta(rs.getInt(6));
-        }return book1;//查到的书籍对象，判断是否被借；
+        }
+        return book1;//查到的书籍对象，判断是否被借；
     }
 }

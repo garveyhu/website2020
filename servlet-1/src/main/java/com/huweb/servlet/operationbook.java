@@ -11,13 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "operationbook",urlPatterns = "/operationbook")
 public class operationbook extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = request.getParameter("uri");
-        if (path.equals("/jsp/bookcrud/m_addbook.jsp")){
+        String origin = request.getParameter("origin");
+        if (origin.equals("append_book")){
             int id = Integer.parseInt(request.getParameter("id"));
             String bookname = request.getParameter("bookname");
             String author = request.getParameter("author");
@@ -33,11 +32,16 @@ public class operationbook extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (S)dis = request.getRequestDispatcher("/jsp/success/opesuccess.jsp");
-            else dis = request.getRequestDispatcher("/jsp/error.jsp");
-            dis.forward(request,response);
+            if (S) {
+                String info = "书籍已加入！";
+                response.getWriter().print(info);
+            }
+            else {
+                String info = "书籍添加失败！";
+                response.getWriter().print(info);
+            }
         }
-        else if (path.equals("/jsp/bookcrud/m_deletebook.jsp")){
+        else if (origin.equals("delete_book")){
             String bookname = request.getParameter("bookname");
             Book book = new Book();
             book.setBookname(bookname);
@@ -49,11 +53,16 @@ public class operationbook extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (S)dis = request.getRequestDispatcher("/jsp/success/opesuccess.jsp");
-            else dis = request.getRequestDispatcher("/jsp/error.jsp");
-            dis.forward(request,response);
+            if (S) {
+                String info = "书籍已被你删除！";
+                response.getWriter().print(info);
+            }
+            else {
+                String info = "没有这本书，删除失败！";
+                response.getWriter().print(info);
+            }
         }
-        else if (path.equals("/jsp/bookcrud/m_changebook.jsp")){
+        else if (origin.equals("modify_book")){
             int id = Integer.parseInt(request.getParameter("id"));
             String bookname = request.getParameter("bookname");
             String author = request.getParameter("author");
@@ -62,7 +71,7 @@ public class operationbook extends HttpServlet {
             int sta = Integer.parseInt(request.getParameter("sta"));
             String oldname = request.getParameter("oldname");
             Book book = new Book(id,bookname,author,price,remarks,sta);
-            book.setOldname("oldname");
+            book.setOldname(oldname);
             IBookDAO bookDAO = new BookDAO();
             RequestDispatcher dis = null;
             boolean S = false;
@@ -71,11 +80,16 @@ public class operationbook extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (S)dis = request.getRequestDispatcher("/jsp/success/opesuccess.jsp");
-            else dis = request.getRequestDispatcher("/jsp/error.jsp");
-            dis.forward(request,response);
+            if (S) {
+                String info = "书籍修改成功！";
+                response.getWriter().print(info);
+            }
+            else {
+                String info = "书籍修改失败！";
+                response.getWriter().print(info);
+            }
         }
-        else if (path.equals("/jsp/bookcrud/querybook.jsp")){
+        else if (origin.equals("inquire")){
             String bookname = request.getParameter("bookname");
             Book book = new Book();
             book.setBookname(bookname);
@@ -88,19 +102,13 @@ public class operationbook extends HttpServlet {
                 e.printStackTrace();
             }
             if (book1==null){
-                dis = request.getRequestDispatcher("/jsp/error.jsp");
-                dis.forward(request,response);}
+                response.getWriter().print("empty");}
             else {
-                PrintWriter out = response.getWriter();
-                out.println("id:"+book1.getId());
-                out.println("bookname:"+book1.getBookname());
-                out.println("author:"+book1.getAuthor());
-                out.println("price:"+book1.getPrice());
-                out.println("remarks:"+book1.getRemarks());
-                out.println("sta:"+book1.getSta());
+                String info = "书名："+book1.getBookname()+"  书号："+book1.getId()+"  作者："+book1.getAuthor()+"  价格："+book1.getPrice()+"  简介："+ book1.getRemarks()+"  剩余数量："+book1.getSta();
+                response.getWriter().print(info);
             }
         }
-        else if (path.equals("/jsp/bookcrud/borrowbook.jsp")){
+        else if (origin.equals("borrow")){
             String bookname = request.getParameter("bookname");
             Book book = new Book();
             book.setBookname(bookname);
@@ -112,11 +120,16 @@ public class operationbook extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (S)dis = request.getRequestDispatcher("/jsp/success/opesuccess.jsp");
-            else dis = request.getRequestDispatcher("/jsp/error.jsp");
-            dis.forward(request,response);
+            if (S) {
+                String info = "书籍已被你借出，请好好保管哦！";
+                response.getWriter().print(info);
+            }
+            else {
+                String info = "没有这本书了呢，再看看其他书吧！";
+                response.getWriter().print(info);
+            }
         }
-        else if (path.equals("/jsp/bookcrud/returnbook.jsp")){
+        else if (origin.equals("return")) {
             String bookname = request.getParameter("bookname");
             Book book = new Book();
             book.setBookname(bookname);
@@ -128,9 +141,13 @@ public class operationbook extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (S)dis = request.getRequestDispatcher("/jsp/success/opesuccess.jsp");
-            else dis = request.getRequestDispatcher("/jsp/error.jsp");
-            dis.forward(request,response);
+            if (S) {
+                String info = "书籍已经归还，感谢你的阅读！";
+                response.getWriter().print(info);
+            } else {
+                String info = "还书失败！";
+                response.getWriter().print(info);
+            }
         }
     }
 
